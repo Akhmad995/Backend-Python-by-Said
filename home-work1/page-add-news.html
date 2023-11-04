@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить новость</title>
+
+    <link rel="stylesheet" href="static/css/style.css"/>
+</head>
+<body>
+    
+    <div id="wrapper">
+
+        <h1>Добавить новость</h1>
+
+        <form class="form" action="/add" method="post">
+
+            <div>
+                <input class="input" type="text" placeholder="Заголовок" name="title" required/>
+            </div>
+            <div>
+                <input class="input" type="text" placeholder="Автор статьи" name="author" required/>
+            </div>
+            <div>
+                <textarea class="input" placeholder="Текст статьи" name="text" required></textarea>
+            </div>
+
+            <div class="btns-row">
+                <input class="btn-form" type="submit" value="Добавить"/>
+            </div> <!-- btns-row -->
+
+        </form> <!-- post -->
+
+    </div> <!-- wapper -->
+
+</body>
+</html>
