@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <h1>Главная страница</h1>
+
+    {% if params.name == 'Zaga'  %}
+        <div>{{params.name}}, добро пожаловать!</div>
+    {% else: %}
+        <div>{{params.name}}, я вас не знаю!</div>
+    {% endif %}
+
+{% endblock %}

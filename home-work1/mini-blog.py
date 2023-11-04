@@ -104,9 +104,10 @@ def search():
 
         news_data = cursor.fetchall()
 
+        htmlcode = "";
 
         for news in news_data:
-            htmlcode = f"""
+            htmlcode += f"""
             <div class="news-blck">
                     <figure class="news-img">
                         <img src="{url_for('static', filename='img/noimage.jpg')}" alt="" loading="lazy"/>
