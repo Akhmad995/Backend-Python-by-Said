@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Страница с формой{% endblock %}
+
+
+{% block content %}
+
+<br><br>
+<form class="form" action="/" method="post">
+
+    {{ form.hidden_tag() }}
+
+    <div>
+        {{ form.name.label( class="input_label" ) }}
+        {{ form.name( class="input" ) }}
+    </div>
+    <div>
+        <div>
+            {{ form.email.label( class="input_label" ) }}
+            {{ form.email( class="input" ) }}
+            <div class="error">{{ form.email.error}}</div>
+        </div>
+    </div>
+    <div>
+        <div>
+            {{ form.password.label( class="input_label" ) }}
+            {{ form.password( class="input" ) }}
+        </div>
+    </div>
+
+    <div class="btns-row">
+        <input class="btn-form" type="submit" value="Отправить"/>
+    </div> <!-- btns-row -->
+
+</form> <!-- post -->
+
+{% endblock %}

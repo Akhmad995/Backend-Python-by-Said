@@ -6,5 +6,6 @@
 # pyinstaller --onefile first.py
 # python 
 # pip install flask - фреймворк фласк
+# pip install flask-wtf - библиотека для обратки форм
 
 # Смена линтера CTRL + SHIFT + p, выбрать mypy
