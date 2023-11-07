@@ -5,14 +5,14 @@ from flask import render_template, redirect
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, PasswordField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Length
 from flask_wtf.csrf import CSRFProtect
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('MY_SECRET_KEY')
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = SECRET_KEY
@@ -20,7 +20,7 @@ csrf = CSRFProtect(app)
 
 
 class Myform(FlaskForm):
-    name = StringField('Name', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired(), Length(max=10, message="Слишком много символов")])
     email = EmailField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Submit')
@@ -40,6 +40,7 @@ def index():
         return redirect('/success')
 
     return render_template("index.html", form=form)
+
 
 @app.route("/success", methods=['POST', 'GET'])
 def success():

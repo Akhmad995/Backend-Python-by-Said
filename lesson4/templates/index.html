@@ -13,12 +13,13 @@
     <div>
         {{ form.name.label( class="input_label" ) }}
         {{ form.name( class="input" ) }}
+        <div class="error">{{ form.name.errors}}</div>
     </div>
     <div>
         <div>
             {{ form.email.label( class="input_label" ) }}
             {{ form.email( class="input" ) }}
-            <div class="error">{{ form.email.error}}</div>
+            <div class="error">{{ form.email.errors}}</div>
         </div>
     </div>
     <div>
