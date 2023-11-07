@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Новость{% endblock %}
+
+{% block content %}
+  
+<h1>Новости</h1>
+
+<div class="item-list">
+
+    {% if news %}
+    {% for post in news %}    
+    
+    <div class="item-blck">
+        <img class="item-img" src="{{ url_for('static', filename='img/noimage.jpg') }}" alt="" loading="lazy"/>
+
+        <div class="item-title">{{ post.title }}</div>
+    </div> <!-- product-blck -->
+        
+    {% endfor %}
+    {% else %}
+        <div>Список пуст!</div>
+    {% endif %}
+
+</div> <!-- item-list -->
+
+{% endblock %}

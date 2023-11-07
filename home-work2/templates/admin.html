@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Админка{% endblock %}
+
+{% block content %}
+  
+<h1>Админка</h1>
+
+
+<form class="form" action="/news" method="post">
+
+    <div>
+        <input class="input" type="text" placeholder="Заголовок статьи" name="title" required/>
+    </div>
+    <div>
+        <textarea class="input" placeholder="Текст статьи" name="text" required></textarea>
+    </div>
+
+    <div class="btns-row">
+        <input class="btn-form" type="submit" value="Добавить новость"/>
+    </div> <!-- btns-row -->
+
+</form> <!-- post -->
+
+<br><br><br>
+
+<form class="form" action="/about" method="post">
+
+    <div>
+        <input class="input" type="text" placeholder="Имя сотрудника" name="name" required/>
+    </div>
+    <div>
+        <input class="input" type="text" placeholder="Должность" name="work" required/>
+    </div>
+
+    <div class="btns-row">
+        <input class="btn-form" type="submit" value="Добавить сотрудника"/>
+    </div> <!-- btns-row -->
+
+</form> <!-- post -->
+
+{% endblock %}
