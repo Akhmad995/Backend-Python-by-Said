@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header class="header">
+            <div class="inner-blck">
+                <img class="h-logo" src="{{ url_for('static', filename='img/noimage.jpg') }}" alt="" loading="lazy"/>
+
+                <nav class="h-menu">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/admin">Опубликовать новость</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header> <!-- header -->
+
+        <main role="main">
+
+            <div class="inner-blck">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+        </main>
+        
+        <footer>
+            <div class="inner-blck">
+                &copy; 2023 Python cours
+            </div>
+        </footer>
+
+    </div> <!-- wrapper -->
+    
+</body>
+</html>

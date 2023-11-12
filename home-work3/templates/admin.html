@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Опубликовать новость{% endblock %}
+
+{% block content %}
+  
+<h1>Опубликовать новость</h1>
+
+
+<form class="form" action="/admin" method="post">
+
+    {{ form.hidden_tag() }}
+
+
+    <div>
+        {{ form.title.label( class="input_label" ) }}
+        {{ form.title( class="input" ) }}
+    </div>
+
+    <div>
+        {{ form.text.label( class="input_label" ) }}
+        {{ form.text( class="input" ) }}
+    </div>
+
+    <div>
+        {{ form.name.label( class="input_label" ) }}
+        {{ form.name( class="input" ) }}
+    </div>
+
+    <div>
+        {{ form.email.label( class="input_label" ) }}
+        {{ form.email( class="input" ) }}
+    </div>
+
+    <div>
+        {{ form.date.label( class="input_label" ) }}
+        {{ form.date( class="input" ) }}
+    </div>
+
+    <div class="btns-row">
+        <input type="submit" class="btn-form" value="Отправить" />
+    </div>
+
+
+</form>
+
+
+{% endblock %}
