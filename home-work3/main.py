@@ -2,7 +2,7 @@ import os
 import sqlite3
 
 from flask import Flask
-from flask import render_template, redirect
+from flask import render_template, redirect, url_for, request
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, DateField, TextAreaField, SubmitField
@@ -23,7 +23,7 @@ app.config["SECRET_KEY"] = SECRET_KEY
 csrf  = CSRFProtect(app)
 
 class Myform(FlaskForm):
-    title = StringField( 'Post title', validators=[ DataRequired(),  Length( max = 10, message = "Слишком много символов" ) ] )
+    title = StringField( 'Post title', validators=[ DataRequired(),  Length( max = 300, message = "Слишком много символов" ) ] )
     text = TextAreaField( 'Post text', validators=[ DataRequired() ] )
     name = StringField( 'Name author', validators=[ DataRequired() ] )
     email = EmailField( 'Email author', validators=[ DataRequired() ] )
@@ -33,7 +33,21 @@ class Myform(FlaskForm):
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    return render_template('index.html')
+    con = sqlite3.connect('home-work3/db/db-news.db')
+    cursor = con.cursor()
+
+
+    cursor.execute("SELECT * FROM news")
+
+    news = cursor.fetchall()
+
+    #print(news)
+
+    con.commit()
+    cursor.close()
+    con.close()
+    
+    return render_template('index.html', news = news)
 
 
 @app.route('/admin', methods=['POST', 'GET'])
@@ -47,9 +61,33 @@ def admin():
         email = form.email.data
         date = form.date.data
 
-        print( title, text, name, email, date)
+        con = sqlite3.connect('home-work3/db/db-news.db')
+        cursor = con.cursor()
+
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS news(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title VARCHAR(200),
+            text VARCHAR(200),
+            author VARCHAR(200),
+            author_email VARCHAR(200),
+            post_date VARCHAR(200)
+        );
+        """)
+
+        news_query = "INSERT INTO news(title, text, author, author_email, post_date) VALUES(?, ?, ?, ?, ?)"
+        
+        news_data = [
+            ( title, text, name, email, date),
+        ]
+        cursor.executemany(news_query, news_data)
+
+        con.commit()
+        cursor.close()
+        con.close()
 
         return redirect("/success")
+    
     return render_template("admin.html", form=form)
 
         

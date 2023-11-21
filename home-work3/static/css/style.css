@@ -62,9 +62,9 @@ main {
 /* item-list */
 .item-list {max-width: 800px; margin: 0 auto;}
 
-.item-blck {margin-bottom: 10px;
+.item-blck {margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #000;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 20px;
 }
 .item-img {width: 150px;
@@ -79,7 +79,11 @@ main {
 .item-title a {text-decoration: none; color: inherit;}
 .item-title:hover {color: blue;}
 
-.item-author {margin-top: 10px; font-size: 12px;}
+.item-date {margin: 10px 0;}
+
+.item-content__bottom {font-size: 14px; font-weight: bold; margin-top: 10px;}
+.item-author {font-size: 12px;}
+.item-email {}
 
 /* footer */
 footer {text-align: center; padding: 20px 0;

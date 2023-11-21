@@ -7,4 +7,30 @@
   
 <h1>Главная страница</h1>
 
+<div class="item-list">
+
+    {% if news %}
+    {% for post in news %}    
+    
+    <div class="item-blck">
+        <img class="item-img" src="{{ url_for('static', filename='img/noimage.jpg') }}" alt="" loading="lazy"/>
+
+        <div class="item-content">
+            <div class="item-title">{{ post[1] }}</div>
+            <div class="item-date">{{ post[5] }}</div>
+            <div class="item-text">{{ post[2] }}</div>
+            <div class="item-content__bottom">
+                <div class="item-author">{{ post[3] }}</div>
+                <div class="item-email">{{ post[4] }}</div>
+            </div>
+        </div>
+    </div> <!-- product-blck -->
+        
+    {% endfor %}
+    {% else %}
+        <div>Список пуст!</div>
+    {% endif %}
+
+</div> <!-- item-list -->
+
 {% endblock %}
