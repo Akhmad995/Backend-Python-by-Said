@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+
+<br><br>
+<h1>Все пользователи</h1>
+
+<form action="/add_user" method="post" class="form">
+    <input class="input" type="text" name="username" placeholder="Введите имя:" />
+    <input class="btn-form" type="submit" value="Добавить" />
+</form>
+
+{% for user in users %}
+    <p{{ user.username }}></p>
+{% endfor %}
+
+
+{% endblock %}
