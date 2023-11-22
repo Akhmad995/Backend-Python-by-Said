@@ -7,7 +7,5 @@
 # python 
 # pip install flask - фреймворк фласк
 # pip install flask-wtf - библиотека для обратки форм
-# pip install Flask-SQLAlchemy - библиотека для работа с БД
 
-
-# Смена линтера CTRL + SHIFT + p, выбрать mypygit 
+# Смена линтера CTRL + SHIFT + p, выбрать mypy
