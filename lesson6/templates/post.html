@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Публикации{% endblock %}
+
+
+{% block content %}
+
+<br>
+<br>
+<h1>Публикации</h1>
+
+<div class="item-list">
+
+    <form action="/post" method="post" class="form">
+        <input class="input" type="text" name="title" placeholder="Введите заголовок:" />
+        <textarea class="input" name="text"></textarea>
+        <input class="btn-form" type="submit" value="Добавить" />
+    </form>
+
+    <br>
+    <br>
+    <br>
+
+    {% if posts %}
+    {% for post in posts %}    
+    
+    <div class="item-blck">
+        <img class="item-img" src="{{ url_for('static', filename='img/noimage.jpg') }}" alt="" loading="lazy"/>
+
+        <div class="item-content">
+            <div class="item-title">{{ post.title }}</div>
+            <div class="item-text">{{ post.text }}</div>
+        </div>
+    </div> <!-- product-blck -->
+        
+    {% endfor %}
+    {% else %}
+        <div>Список пуст!</div>
+    {% endif %}
+
+</div> <!-- item-list -->
+
+{% endblock %}
