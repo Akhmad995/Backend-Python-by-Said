@@ -41,18 +41,23 @@ class User(db.Model):
         return f"<User id={self.id}>, username={self.username}"
 
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def index():
-    form = Myform()
-
-    if form.validate_on_submit():
-        users = User.query.all()
-        print(users)
+  
+    users = User.query.all()
+    print(users)
     
-    return render_template('index.html', form=form)
+    return render_template('index.html', users=users)
 
 
-@app.route('/add_user', methods=['POST'])
+@app.route('/admin', methods=['POST', 'GET'])
+def admin():
+    form = Myform()
+    
+    return render_template("admin.html", form=form)
+
+
+@app.route('/add_user', methods=['POST', 'GET'])
 def add_user():
     username = request.form.get("username")
     user = User(username=username)

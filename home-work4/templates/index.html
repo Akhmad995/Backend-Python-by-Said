@@ -12,16 +12,5 @@
     <p>{{ user.username }}</p>
 {% endfor %}
 
-<br><br>
-
-<form action="/add_user" method="post" class="form">
-
-    {{ form.hidden_tag() }}
-
-    {{ form.title( class="userfio" ) }}
-    <input class="btn-form" type="submit" value="Добавить" />
-    
-</form>
-
 
 {% endblock %}
