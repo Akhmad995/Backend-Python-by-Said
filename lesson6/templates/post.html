@@ -13,7 +13,10 @@
 
     <form action="/post" method="post" class="form">
         <input class="input" type="text" name="title" placeholder="Введите заголовок:" />
+        <input class="input" type="text" name="author" placeholder="Введите автора:" />
+
         <textarea class="input" name="text"></textarea>
+        
         <input class="btn-form" type="submit" value="Добавить" />
     </form>
 
@@ -30,6 +33,7 @@
         <div class="item-content">
             <div class="item-title">{{ post.title }}</div>
             <div class="item-text">{{ post.text }}</div>
+            <div class="item-text">{{ post.author }}</div>
         </div>
     </div> <!-- product-blck -->
         

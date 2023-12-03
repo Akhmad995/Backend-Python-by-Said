@@ -14,11 +14,14 @@ def index():
     return render_template('index.html', users=users)
 
 
-@app.route('/add_user', methods=['POST'])
+@app.route('/add_user', methods=['POST', 'GET'])
 def add_user():
     username = request.form.get("username")
     usersurname = request.form.get("usersurname")
+   
+    #user = User(username=username)
     user = User(username=username, usersurname=usersurname)
+   
     db.session.add(user)
     db.session.commit()
     print(user)
@@ -31,6 +34,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), unique=True, nullable=False)
     text = db.Column(db.String, nullable=False)
+    author = db.Column(db.String)
 
 
 @app.route('/post', methods=['POST', 'GET'])
@@ -38,8 +42,9 @@ def add_post():
     if request.method == "POST":
         title = request.form.get("title")
         text = request.form.get("text")
+        author = request.form.get("author")
         
-        post = Post(title=title, text=text)
+        post = Post(title=title, text=text, author=author)
         
         db.session.add(post)
         db.session.commit()
