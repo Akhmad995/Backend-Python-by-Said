@@ -10,13 +10,16 @@
 
 # Смена линтера CTRL + SHIFT + p, выбрать mypy
 
-
-# pip install flask-migrate - библиотека для миграций, является оберткой для Alembic
-# export FLASK_APP=main
-# flask db init
-# python -m  flask db init
-# python -m flask db migrate -m 'Расширил модель пользотеля'
-# python -m db upgrate
-
 # python -m venv venv - виртуальное окружение
 # source venv/Scripts/activate - активация
+
+# pip install flask-migrate - библиотека для миграций, является оберткой для Alembic
+# export FLASK_APP= {имя главного файла}
+# flask db init
+# flask db migrate -m 'Расширил модель пользотеля'
+# flask db upgrade
+
+
+# pip install Flask-SQLAlchemy - установка orm SQLAlchemy
+
+# pip install python-dotenv - работа с файлом настроек
