@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Публикации{% endblock %}
+
+
+{% block content %}
+
+<br>
+<br>
+<h1>Публикации</h1>
+
+<div class="item-list">
+
+    <form action="/post" method="post" class="form">
+        
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.title(class="input") }}
+        </div>
+
+        <div>
+            {{ form.text(class="input") }}
+        </div>
+
+        <div>
+            {{ form.author(class="input") }}
+        </div>
+
+    
+        <input class="btn-form" type="submit" value="Добавить" />
+    </form>
+
+
+</div> <!-- item-list -->
+
+{% endblock %}

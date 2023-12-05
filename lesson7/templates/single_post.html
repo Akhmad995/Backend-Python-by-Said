@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Публикации{% endblock %}
+
+
+{% block content %}
+
+<br>
+<br>
+
+
+
+<div class="item-list">
+
+    {% id post %}
+    <div class="item-blck">
+        <img class="item-img" src="{{ url_for('static', filename='img/noimage.jpg') }}" alt="" loading="lazy"/>
+
+        <div class="item-content">
+            <div class="item-title">{{ post.title }}</div>
+            <div class="item-text">{{ post.text }}</div>
+        </div>
+    </div> <!-- product-blck -->
+    {% else: %}
+        Такой публикации не существует
+    {% endif %}
+
+</div> <!-- item-list -->
+
+{% endblock %}
