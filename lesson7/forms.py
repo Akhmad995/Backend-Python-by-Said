@@ -1,10 +1,18 @@
+# Файл с формами приложения
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField
-from wtforms.validators import DataRequired, Length
+from wtforms import StringField, SubmitField, IntegerField
+from wtforms.validators import DataRequired
 
 
-class PostForm():
-    title = StringField('Name', validators=[DataRequired()])
-    text = TextAreaField('text', validators=[DataRequired()])
-    author = TextAreaField('author', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+class PostForm(FlaskForm):
+    title = StringField('Заголовок', validators=[DataRequired()])
+    text = StringField('Содержимое', validators=[DataRequired()])
+    author = StringField('Автор')
+    submit = SubmitField('Опубликовать')
+
+
+class AuthorForm(FlaskForm):
+    username = StringField('Имя', validators=[DataRequired()])
+    age = IntegerField('Возраст', validators=[DataRequired()])
+    bio = StringField('Биография')
+    submit = SubmitField('Добавить')
