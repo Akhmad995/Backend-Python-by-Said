@@ -37,6 +37,38 @@ def get_users():
 
     return render_template('users.html', form=userform, users=users)
 
+@app.route('/spec_users', methods=['GET', 'POST'])
+def get_spec_users():
+    userform = UserForm()
+    
+    # user = User.query.get_or_404(1)
+    # users = User.query.filter_by(age=30, username='Саид')
+    
+    # users = User.query.filter( User.age.in_( range(30, 40) ) ).all()
+    # users = User.query.filter( User.age.not_in( [25] ) ).all()
+
+    # users = User.query.filter(
+    #     db.and_( User.age.in_( range(10, 40) ) ),
+    #     User.address == 'Махачкала',
+    #     User.username == 'Саид',
+    # ).all()
+
+    # users = User.query.filter(
+    #     db.or_( 
+    #         User.age.in_( range(10, 40) ),
+    #         User.address == 'Махачкала',
+    #     ),
+    #     User.username == 'Саид',
+    # ).all()
+
+    #  users = User.query.order_by(User.address).all()
+    # users = User.query.order_by(User.address.desc()).all()
+    # users = User.query.limit(2).all()
+    # users = User.query.filter( User.username.endswitch('лан') ).all()
+    users = User.query.filter( User.username.startswitch('Са') ).all()
+
+    return render_template('users.html', form=userform, users=users)
+
 
 if __name__ == '__main__':
     with app.app_context():
