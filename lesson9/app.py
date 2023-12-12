@@ -18,9 +18,9 @@ csrf = CSRFProtect(app)
 def index():
     users = User.query.all()
 
-    town = Address.query.filter_by(town_name = 'Махачкала').first()
-    user1 = User(username='Магомед', address_id=town.id)
-    print(user1.username, user1.address_id)
+    # town = Address.query.filter_by(town_name = 'Махачкала').first()
+    # user1 = User(username='Магомед', address_id=town.id)
+    # print(user1.username, user1.address_id)
     
     # town1 = Address(town_name='Москва')
     # town2 = Address(town_name='Хасавюрт')
@@ -34,16 +34,12 @@ def index():
 
     # db.session.commit()
 
-    user2 = User.query.get(1)
-    address = Address.query.get(1)
+    # user2 = User.query.get(1)
+    # address = Address.query.get(1)
+    # print(user2.user_address.town_name)
 
-    print(user2.user_address.town_name)
-    
-    print("*****")
-
-    for user in address.users:
-        print(user.username)
-
+    # for user in address.users:
+        #print(user.username)
 
     return render_template('index.html', users = users)
 
