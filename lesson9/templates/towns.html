@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="/towns" method="post">
+        <div>
+            {{ form.hidden_tag() }}
+        </div>
+
+        {% for field in form if field.name !=  'csrf_token' %}
+            <div>
+                <p>{{ field.label() }}</p>
+                {{ field() }}
+            </div>
+        {% endfor %}
+    </form>
+
+    <ul>
+        {% for town in towns %}
+            <li><h3>{{ town.town_name }}</h3></li></p></li>
+        {% endfor %}
+    </ul>
+
+
+</body>
+</html>

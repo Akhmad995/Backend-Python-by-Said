@@ -65,7 +65,11 @@ def get_spec_users():
     # users = User.query.order_by(User.address.desc()).all()
     # users = User.query.limit(2).all()
     # users = User.query.filter( User.username.endswitch('лан') ).all()
-    users = User.query.filter( User.username.startswitch('Са') ).all()
+    # users = User.query.filter( User.username.startswitch('Са') ).all()
+
+    query = db.select( User.username, User.address ).filter_by(username='Саид')
+    print(query)
+    users = db.session.execute(query).scalar()
 
     return render_template('users.html', form=userform, users=users)
 
