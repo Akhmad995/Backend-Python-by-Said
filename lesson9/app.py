@@ -16,7 +16,36 @@ csrf = CSRFProtect(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    users = User.query.all()
+
+    town = Address.query.filter_by(town_name = 'Махачкала').first()
+    user1 = User(username='Магомед', address_id=town.id)
+    print(user1.username, user1.address_id)
+    
+    # town1 = Address(town_name='Москва')
+    # town2 = Address(town_name='Хасавюрт')
+    # db.session.add(town1)
+    # db.session.add(town2)
+
+    # user2 = User(username='Гасейн', address_id=2)
+    # user3 = User(username='Сидреддин', address_id=2)
+    # db.session.add(user2)
+    # db.session.add(user3)
+
+    # db.session.commit()
+
+    user2 = User.query.get(1)
+    address = Address.query.get(1)
+
+    print(user2.user_address.town_name)
+    
+    print("*****")
+
+    for user in address.users:
+        print(user.username)
+
+
+    return render_template('index.html', users = users)
 
 
 # Работа со страницей списка всех авторов, подходящих по условию
@@ -26,9 +55,8 @@ def get_users():
 
     if userform.validate_on_submit():
         username = userform.username.data
-        age = userform.age.data
         address = userform.address.data
-        user = User(username=username, age=age, address=address)
+        user = User(username=username, address_id=address)
 
         db.session.add(user)
         db.session.commit()
