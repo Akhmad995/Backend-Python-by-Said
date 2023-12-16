@@ -22,3 +22,5 @@
 # pip install Flask-SQLAlchemy - установка orm SQLAlchemy
 
 # pip install python-dotenv - работа с файлом настроек
+
+# pip install flask-login - библиотека для атворизации
