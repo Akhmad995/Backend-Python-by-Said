@@ -24,3 +24,6 @@
 # pip install python-dotenv - работа с файлом настроек
 
 # pip install flask-login - библиотека для атворизации
+
+# pip install Flask-RESTful
+# pip install SQLAlchemy-serializer
